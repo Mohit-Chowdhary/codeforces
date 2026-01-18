@@ -32,6 +32,7 @@ int main(){
         }
         if(start) intervals++;
 
+        intervals = intervals>2? 2: intervals;
         cout<<intervals<<"\n";
     }
 }
