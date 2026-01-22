@@ -15,7 +15,7 @@ long long binpow(long long a, long long b, long long m) {
 }
 
 int main(){
-    cout<<binpow(5,202,6);
+    cout<<binpow(3,999,7);
     return 0;
     
 }
