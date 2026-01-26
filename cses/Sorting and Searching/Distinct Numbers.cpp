@@ -10,15 +10,16 @@ int main() {
     int n;
     cin>>n;
 
-    ll sol = 0;
-    unordered_set<ll> s;
+    ll sol = 1;
+    vector<int> a(n);
     for(int i=0;i<n; i++){
-        int a;
-        cin>>a;
-        if(s.count(a)) continue;
-        s.insert(a);
-        sol++;
+        cin>>a[i];
+    }
 
+    sort(a.begin(), a.end());
+
+    for(int i=1;i<n;i++){
+        if(a[i]!=a[i-1]) sol++;
     }
 
     cout<<sol<<endl;
