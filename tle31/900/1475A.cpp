@@ -4,7 +4,6 @@ using namespace std;
 
 typedef long long ll;
 
-
 void solve(){
     ll n;
     cin>>n;
@@ -27,5 +26,4 @@ int main(){
     while(tt--){
         solve();
     }
-
 }
