@@ -19,7 +19,7 @@ void solve(){
 
     stable_sort(a.begin(),a.end(),[](const pair<int,int>&x, const pair<int,int>&y){
         if(x.first != y.first){
-            return x.first>y.second;
+            return x.first>y.first;
         }
         return x.second<y.second;
     });
