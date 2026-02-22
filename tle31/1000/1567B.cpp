@@ -24,7 +24,7 @@ void solve(){
     ll base =  xorupto(a-1);//(1<<(pow-1))/2;
     //cout<<"aktually "<<actualPow<<"\n\n";
 
-    ll need = base^b;
+    ll need = base^a;
     if(base == b){
         cout<<a;
     }
@@ -34,7 +34,10 @@ void solve(){
     
 }
 
-int main(){
+int main(){    
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
     int tt;
     cin>>tt;
 

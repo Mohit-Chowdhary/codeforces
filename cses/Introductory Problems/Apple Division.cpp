@@ -4,24 +4,41 @@ using namespace std;
 
 typedef long long ll;
 
-int main(){
+void solve(){
     int n;
     cin>>n;
+
     vector<ll> a(n);
-    for(int i=0;i<n;i++) cin>>a[i];
-
-    sort(a.begin(),a.end());
-
-    ll suml = 0;
-    ll sumr = 0;
-    ll sum  = 0;
-
-    int i = 0;
-    int j = n-1;
-
-    while(i<j){
-        // suml sumr
+    ll total = 0;
+    for(int i=0;i<n;i++){
+        cin>>a[i];
+        total+=a[i];
     }
 
-    cout<<abs(sum);
+    ll ans = INT_MAX;
+    for(int mask=0; mask< (1<<n); mask++){
+        ll sum = 0;
+
+        for(int i=0; i<n;i++){
+            if(mask & (1<<i)){
+                sum+=a[i];
+            }
+        }
+
+        ans = min(ans,abs(total - 2*sum));
+    }
+
+    cout<<ans<<"\n";
+}
+
+int main(){    
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    // int tt;
+    // cin>>tt;
+
+    // while(tt--){
+        solve();
+    //}
 }

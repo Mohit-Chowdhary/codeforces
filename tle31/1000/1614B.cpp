@@ -32,7 +32,7 @@ void solve(){
 
     ll sum = 0;
     for(int i=0;i<n;i++){
-        sum += 1LL*abs(ans[i]) * a[i].first * 2;
+        sum += 1LL*abs(ans[i]) * a[i].first * 2LL;
     }
 
     cout<<sum<<"\n0 ";
