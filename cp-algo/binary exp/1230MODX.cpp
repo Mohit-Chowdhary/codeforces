@@ -1,32 +1,38 @@
+/*
+    author: Mohit-Chowdhary
+*/
+
 #include <bits/stdc++.h>
+
 using namespace std;
 
-#define ll long long
+typedef long long ll;
 
-int main() {
+void solve(){
+    ll a,n,m;
+    cin>>a>>n>>m;
+    
+    a%=m;
+    ll res = 1;
+
+    while(n>0){
+        if(n&1){
+            res = (res*a)%m;
+        }
+        a = (a*a)%m;
+        n>>=1;
+    }
+
+    cout<<res<<"\n";
+}
+
+int main(){    
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
+    // int tt;
+    // cin>>tt;
 
-    int t;
-    cin>>t;
-    while(t--){
-        int x,y,n;
-        cin>>x>>y>>n;
-
-        ll sol = 1;
-        while(y>0){
-            if(y&1){
-                sol *= x;
-                sol %=n;
-            }
-            x *= x;
-            x %= n;
-            y>>=1;
-        }
-
-        cout<<sol<<"\n";
-    }
-    int m;
-    cin>>m;
-
+    // while(tt--){
+         solve();
+    // }
 }

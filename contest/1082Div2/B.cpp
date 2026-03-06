@@ -53,7 +53,6 @@ void solve(){
             while(count>1 && rem>0){
                 count--; rem--;
             }
-            cout<<"hmm\n";
             if(count<-1 || count>1){
                 cout<<"NO\n";
                 return;
