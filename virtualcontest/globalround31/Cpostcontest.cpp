@@ -14,26 +14,21 @@ int main(){
     while(t--){
         ll n,k;
         cin>>n>>k;
-        for(int i=0;i<k-2;i++){
-            cout<<n<<" ";
+        if(k%2){
+            for(int i=0;i<k;i++) cout<<n<<" ";
         }
-        if(k%2==0){
-            int x=0,y=0;
-            int n1=n;
-            while(n1>0){
-                int q=n1>>1;
-                if(q){
-                    y = y<<1|1;
-                    x = x<<1|0;
-                } 
-                else{
-                    y = y<<1|1;
-                    x = x<<1|1;
-                }
-                n1 = n1>>1;
+        else{
+            for(int i=0;i<k-2;i++) cout<<n<<" ";
+
+            int x1 = n-1;
+            int x2 = x1^n;
+            if(x2>n){
+                x1 = n;
+                x2=0;
             }
-            cout<<x<<" "<<y<<endl;
+            cout<<x1<<" "<<x2;
         }
-        else cout<<n<<" "<<n<<endl;
+
+        cout<<"\n";
     }
 }
