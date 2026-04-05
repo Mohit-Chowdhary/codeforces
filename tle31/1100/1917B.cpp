@@ -8,17 +8,6 @@ using namespace std;
 
 typedef long long ll;
 
-void back(string s, set<string>& v){
-    if(s.size()==1) return;
-
-    string s1 = s[0]+s.substr(2);
-    string s2 = s.substr(1);
-    v.insert(s1); v.insert(s2);
-
-    back(s1,v);
-    back(s2,v);
-    
-}
 
 void solve(){
     int n;
@@ -26,11 +15,17 @@ void solve(){
     string s;
     cin>>s;
 
-    set<string> v;
+    int total = 0;
+    int m[26]={0};
+    for(int i=0;i<n;i++){
+        int x = s[i];
+        if(!m[x-'a']){
+            total += n-i;
+            m[x-'a']++;
+        }
+    }
 
-    back(s,v);
-
-    cout<<v.size()+1<<"\n";
+    cout<<total<<"\n";
 }
 
 int main(){    

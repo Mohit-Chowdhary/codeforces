@@ -7,52 +7,51 @@
 using namespace std;
 
 typedef long long ll;
-const ll MOD = 1e9 + 7;
-const ll MOD2 = 998244353;
-const ll INF = 1e18;
 
-const ll prime_size = 1000000;
-void seive();
-vector<bool> isprime(prime_size+1,true);
-
-#define pb push_back
-#define all(x) (x).begin(), (x).end()
-#define sz(x) ((int)(x).size())
-#define input(v,x) for(int i=0;i<x;i++) cin>>v[i];
+#define output(x) for(auto y:x) cout<<y<<" ";
 
 void solve(){
-    ll n;
+    int n;
     cin>>n;
 
-    vector<pair<ll,ll>> a(n);
+    vector<pair<ll,int>> a(n);
 
     for(int i=0;i<n;i++){
-        cin>>a[i].first;
         a[i].second = i;
+        cin>>a[i].first;
     }
 
-    sort(a.begin(),a.end());
+    sort(a.begin(), a.end());
 
+    vector<ll> pre(n);
 
-    vector<ll> res(n,0);
+    pre[0]=a[0].first;
+
+    for(int i=1;i<n;i++){
+        pre[i] = pre[i-1]+a[i].first;
+    }
+
+    vector<int> ans(n);
+
+    ans[n-1] = n-1;
+
+    for(int i=n-2;i>=0; i--){
+        if(a[i+1].first <= pre[i]){
+            ans[i] = ans[i+1];
+        }
+        else{
+            ans[i] = i;
+        }
+    }
+
+    vector<int> res(n);
 
     for(int i=0;i<n;i++){
-        auto [x,y] = a[i];
-        ll count = 0;
-
-        for(int j=0;j<n;j++){
-            if(a[j].second == y) continue;
-            if(a[j].first>x){
-                break;
-            }
-            x+=a[j].first;
-            count++;
-        }
-        res[y] = count;
+        int og = a[i].second;
+        res[og] = ans[i];
     }
 
-    for(auto x:res) cout<<x<<" ";
-
+    output(res);
     cout<<"\n";
 
 }
