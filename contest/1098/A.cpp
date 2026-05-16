@@ -8,31 +8,31 @@ using namespace std;
 
 typedef long long ll;
 
-#define output(x) for(auto y:x) cout<<y<<" ";
-#define input(a,n) for(int i=0;i<n;i++) cin>>a[i];
-#define all(x) x.begin(),x.end()
-
-int sz = 1e6    ;
-
 void solve(){
     int n;
     cin>>n;
-
     vector<int> a(n);
-    int h = 0;
+    for(int i=0;i<n;i++) cin>>a[i];
 
-    for(int i=0;i<n;i++){
-        cin>>a[i];
-        h = max(h,a[i]);
-    }
+    map<int,int> m;
+    for(auto x:a) m[x]++;
 
-    
+    int count = m[0];
+
+    int left = min(m[1],m[2]);
+    count+=left;
+
+    if( (m[1]-left) >0) count+=(m[1]-left)/3;
+    if( (m[2]-left) >0) count+=(m[2]-left)/3;
+
+
+    cout<<count<<endl;
 }
 
 int main(){    
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    int tt = 1;
+    int tt;
     cin>>tt;
 
     while(tt--){
