@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 n = 50
 times = 1000
 
+# context: https://www.youtube.com/shorts/ZHXt0-_gSj4
+
 # strings can be assumed to be of anythign form 1 to n (rand)
 # but is there a diffrence when  picking sides 
 # do we count the length of string which increases with each additon makeing it higher probable to slect it
