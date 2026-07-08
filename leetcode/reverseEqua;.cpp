@@ -17,7 +17,7 @@ int n,m;
 
 void expand(int l, int r){
     while(l>=0 && r<=(n+1) && s2[l] == s1[l] && s1[r]==s2[r]){
-        if(s1[l] == s1[r] && l!=r) cnt++;
+        if(s1[l] == s1[r] && r-l>2) cnt++;
         l--;
         r++;
     }
@@ -35,32 +35,34 @@ void solve(){
         cout<<"0\n"; return;
     }
     cnt = 0;
-
-    for(int i=0;i<n-1; i++){
-        for(int len=2; len+i<=n;len++){
-            string s = s1.substr(i,len);
-            string s3 = s2.substr(i,len);
-            reverse(s.begin(),s.end());
-            // cout<<s;
-            if(s==s3){
-                cnt++;
-                //cout<<" is accunted";
+    if(s1 !=s2){
+        for(int i=0;i<n-1; i++){
+            for(int len=2; len+i<=n;len++){
+                reverse(s1.begin()+i,s1.begin()+i+len);
+                // cout<<s;
+                if(s1==s2){
+                    cnt++;
+                    //cout<<" is accunted";
+                }
+                reverse(s1.begin()+i,s1.begin()+i+len);
+                // cout<<endl;
             }
-            // cout<<endl;
         }
     }
 
-    s2 = "#"+s2;
-    s2.push_back('#');
-    s1 = '#'+s1;
-    s1.push_back('#');
-    
+    if(s1==s2){
 
-    for(int i=1; i<=n; i++){
-        if(s1[i]==s2[i]){
-            expand(i,i);
-            if(i>1 && s1[i-1]==s2[i-1]){
-                expand(i-2,i+1);
+        s2 = "#"+s2;
+        s2.push_back('#');
+        s1 = '#'+s1;
+        s1.push_back('#');
+        
+        for(int i=1; i<=n; i++){
+            if(s1[i]==s2[i]){
+                expand(i,i);
+                if(i>1 && s1[i-1]==s2[i-1]){
+                    expand(i-2,i+1);
+                }
             }
         }
     }
