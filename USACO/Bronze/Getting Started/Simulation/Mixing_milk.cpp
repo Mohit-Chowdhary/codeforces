@@ -41,8 +41,8 @@ int main(){
     cin.tie(nullptr);
     int tt = 1;
     //cin>>tt;
-    freopen("shell.in", "r", stdin);
-    freopen("shell.out", "w", stdout);
+    freopen("mixmilk.in", "r", stdin);
+    freopen("mixmilk.out", "w", stdout);
 
     while(tt--){
         solve();
